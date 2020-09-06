@@ -25,8 +25,7 @@ if __name__ == '__main__':
         safe_countries_section = soup.select_one('#countries-and-territories-with-no-self-isolation-requirement-on-'
                                                  'arrival-in-england')
         # I am sure that there is some more elegant way to do this
-        safe_countries_list_on_website = safe_countries_section.next_element.next_element.next_element.next_element.\
-            next_element.next_element.next_element.next_element.next_element.next_element.next_element.next_element
+        safe_countries_list_on_website = safe_countries_section.find_next('ul')
         for country in safe_countries_list_on_website:
             if hasattr(country, 'text'):
                 safe_countries_now.append(country.text)
